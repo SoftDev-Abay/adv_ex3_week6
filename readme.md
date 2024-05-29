@@ -13,10 +13,9 @@ This project is created to print an art of ascii symbols.
 
 ```
 
-# Developers:
+# Developer:
 
-1. Abay Aliyev (abaliyev),
-2. Adilzhan Shirbayev (ashirbay).
+Abay Aliyev (abaliyev),
 
 # Instructions
 
