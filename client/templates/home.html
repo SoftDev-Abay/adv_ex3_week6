@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0px;
+    }
+    body {
+      background-color: rgb(166, 204, 255);
+    }
+    header {
+      text-align: center;
+      font-size: 25px;
+      padding: 10px 0;
+      color: #1d4ed8;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      background-color: white;
+    }
+
+
+    .form-wrapper {
+      margin-top: 40px;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 800px;
+      padding: 10px 20px;
+    }
+    form textarea {
+      width: 100%;
+      font-size: 18px;
+      padding: 15px;
+      resize: none;
+    }
+
+    .styles-wrapper {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      gap: 5px;
+    }
+
+    .styles-wrapper .style-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+      flex: 1 1 ;
+      border-radius: 7px;
+      background-color: #1d4ed8;
+      color: white;
+      gap: 5px;
+      cursor: pointer;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+      border: 2px solid #1d4ed8;
+    }
+    .styles-wrapper .style-item:hover {
+      border-color: #ffffff;
+      /* background-color: #6d93fa; */
+    }
+
+    .style-item:focus {
+      border-color: #ffffff;
+      /* background-color: #6d93fa; */
+    }
+    .style-item-header {
+      font-size: 25px;
+      font-weight: 600;
+    }
+    .style-item-title {
+      font-size: 15px;
+    }
+    pre {
+      margin-top: 20px;
+      overflow-x: scroll;
+      overflow-y: scroll;
+      border-radius: 8px;
+      min-height: 300px;
+      height: 500px;
+      background-color: white;
+      padding: 20px;
+    }
+  </style>
+  <body>
+    <header>
+      <h1>ASCII Art Web</h1>
+    </header>
+        <div class="form-wrapper">
+          <form action="/ascii-art" method="post">
+              <textarea
+                name="input"
+                id="input-text"
+                placeholder="Write to generate here..."
+              ></textarea>
+
+            <div class="styles-wrapper">
+              <button type="submit" name="stylename" value="standard" class="style-item" tabindex="1">
+                <span class="style-item-header">\()/</span>
+                <span class="style-item-title">standard</span>
+              </button>
+              <button type="submit" name="stylename" value="shadow" class="style-item" tabindex="1">
+                <span class="style-item-header">__|__|__</span>
+                <span class="style-item-title">shadow</span>
+              </button>
+              <button type="submit" name="stylename" value="thinkertoy" class="style-item" tabindex="1">
+                <span class="style-item-header">o-o-o</span>
+                <span class="style-item-title">thinkertoy</span>
+              </button>
+            </div>
+          </form>
+
+          <pre id="output">{{.AsciiText}}</pre>
+        </div>
+
+  </body>
+</html>

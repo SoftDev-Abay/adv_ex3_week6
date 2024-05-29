@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Page</title>
+</head>
+<style>
+    .container{
+        width:  400px;
+        margin-top: 100px;
+        text-align: center;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        background-color: rgb(233, 233, 233);
+    }
+    h1{
+        color: rgb(131, 131, 131);
+        /* font-size: ; */
+    }
+    .message{
+        font-size: 20px;
+    }
+    .mem{
+        font-size: 24px;
+    }
+    .img-wrapper{
+        
+    }
+</style>
+<body>
+    <div class="container">
+        
+        <h1>
+            Whoops!
+        </h1>
+        <p class="message">
+            {{ .ErrorCode }} {{ .ErrorMsg }}
+        </p>
+
+        <div class="img-wrapper">
+            <img src="../assets/dogsvac.jpg" alt="">
+        </div>
+
+        <p class="mem">Looks like this page went on a vacation.</p>
+
+        <p>
+            Try our <a href="/">homepage</a> instead.
+        </p>
+    </div>
+
+
+</body>
+</html>

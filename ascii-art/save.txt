@@ -1,0 +1,86 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
+
+func main() {
+	letters, err := readStyles()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	readInput("damirrrrr", letters)
+}
+
+func readInput(str string, letters [95][8]string) {
+	var lettersToPrint [][8]string
+
+	for _, strLetterIndex := range str {
+		if strLetterIndex >= 32 && strLetterIndex <= 126 {
+			strLetterIndex -= 32
+			lettersToPrint = append(lettersToPrint,letters[strLetterIndex] )
+		}
+
+	}
+	printWholeLineFromLetters(lettersToPrint)
+}
+
+func printWholeLineFromLetters(letters [][8]string){
+	result := ""
+	for i := 0; i < 8 ; i++ {
+		for _, letter := range letters {
+			result += letter[i] + " " 
+		}
+		result += "\n"
+	}
+	fmt.Println(result)
+}
+
+func readStyles() ([95][8]string, error) {
+	pathToShadow := "styles/shadow.txt"
+	var empty [95][8]string
+
+	file, err := os.Open(pathToShadow)
+	if err != nil {
+		fmt.Println(err)
+		return empty, err
+	}
+	defer file.Close()
+	scanner := bufio.NewScanner(file)
+	// optionally, resize scanner's capacity for lines over 64K, see next example
+	var letters [95][8]string
+	letterIndex := 0
+	for scanner.Scan() {
+
+		for i := 0; i < 8; i++ {
+			scanner.Scan()
+			line := scanner.Text()
+
+			letters[letterIndex][i] = line
+		}
+		// fmt.Println(letters[letterIndex])
+		if err != nil {
+			fmt.Println(err)
+			return empty, err
+
+		}
+		letterIndex++
+	}
+	if err := scanner.Err(); err != nil {
+		fmt.Println(err)
+		return empty, err
+
+	}
+
+	// for i, letterLines := range letters {
+	// 	fmt.Println("letter:", i)
+
+	// 	for _, line := range letterLines {
+	// 		fmt.Println(line)
+	// 	}
+	// }
+	return letters, nil
+}
