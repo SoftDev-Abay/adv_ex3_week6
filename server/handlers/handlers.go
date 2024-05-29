@@ -87,7 +87,6 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request) {
 
 	t, err := template.ParseFiles(getTemplatePath("client/templates/home.html"))
 	if err != nil {
-		log.Println(err.Error())
 		ErrorHandler(w, r, http.StatusInternalServerError, http.StatusText(http.StatusInternalServerError))
 		return
 	}
@@ -100,8 +99,6 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request) {
 		return
 
 	}
-
-	log.Printf("Input text: %s, Style name: %s", inputText, styleName)
 
 	if err := validation.ConsistsOnlyFromAsciiChars(inputText); err != nil {
 		ErrorHandler(w, r, http.StatusBadRequest, http.StatusText(http.StatusBadRequest))

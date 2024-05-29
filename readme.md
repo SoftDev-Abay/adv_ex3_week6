@@ -67,5 +67,3 @@ go test -short -v
 -list
 -count
 -json
--cpu
--race
